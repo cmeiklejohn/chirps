@@ -1,0 +1,22 @@
+{
+  "name": "cweepy-es6",
+  "author": "Simon Hojberg",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "express": "latest"
+  },
+   "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "0.2.0",
+    "react-tools": "latest",
+    "grunt-react": "~0.4.0",
+    "grunt-traceur": "0.0.1"
+  },
+  "engine": {
+    "node": ">=0.8.x"
+  }
+}

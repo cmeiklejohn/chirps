@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+  <head>
+    <meta charset='utf-8'/>
+    <title>Cweepy</title>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+  </head>
+
+  <body>
+    <article id='app'>
+      <div id='content'></div>
+    </article>
+
+    <script src="https://traceur-compiler.googlecode.com/git/bin/traceur.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/react/0.4.1/react.min.js'></script>
+    <script src='js/vendor/reqwest.min.js'></script>
+
+    <script src='js/app/models/eventable.js'></script>
+    <script src='js/app/models/rest_model.js'></script>
+    <script src='js/app/models/rest_model_list.js'></script>
+    <script src='js/app/models/cweep.js'></script>
+    <script src='js/app/models/cweep_list.js'></script>
+
+    <script src='js/app/components/add_cweep.js'></script>
+    <script src='js/app/components/cweep_item.js'></script>
+    <script src='js/app/components/cweeps.js'></script>
+    <script src='js/app/components/header.js'></script>
+    <script src='js/app/components/app.js'></script>
+
+    <script>
+      React.renderComponent(
+        App(null),
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+
+</html>
