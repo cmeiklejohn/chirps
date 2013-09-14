@@ -6,4 +6,11 @@ class Cweep extends RestModel {
     this.root = '/cweeps';
   }
 
+  serialize() {
+    return {
+      message:  this.message,
+      avatar:   this.avatar
+    };
+  }
+
 }
