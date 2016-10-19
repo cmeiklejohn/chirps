@@ -4,18 +4,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "compile": "browserify -v -t [ babelify ] app/main.jsx -o public/js/bundle.js",
+    "watch": "watchify -v -t [ babelify ] app/main.jsx -o public/js/bundle.js"
   },
   "dependencies": {
+    "antidote_ts_client": "0.0.1",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
     "express": "3.0.0",
-    "antidote_ts_client": "0.0.1"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   },
-   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "0.2.0",
-    "react-tools": "latest",
-    "grunt-react": "~0.4.0",
-    "grunt-traceur": "0.0.1"
+  "devDependencies": {
+    "browserify": "13.1.0",
+    "watchify": "3.7.0"
   },
   "engine": {
     "node": ">=0.8.x"

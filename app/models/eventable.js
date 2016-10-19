@@ -1,4 +1,4 @@
-class Eventable {
+exports.Eventable = class Eventable {
 
   on(evt, handler) {
     this._handlers = this._handlers || {};

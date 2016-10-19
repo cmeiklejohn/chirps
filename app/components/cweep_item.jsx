@@ -1,6 +1,6 @@
-/** @jsx React.DOM */
+let React = require('react');
 
-var CweepItem = React.createClass({
+exports.CweepItem = React.createClass({
   render: function () {
     var cweep = this.props.cweep,
         style = {

@@ -1,4 +1,6 @@
-class Cweep extends RestModel {
+let rm = require("./rest_model.js")
+
+exports.Cweep = class Cweep extends rm.RestModel {
 
   constructor(props) {
     super(props);

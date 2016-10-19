@@ -1,6 +1,7 @@
-/** @jsx React.DOM */
+let React = require('react');
+let CweepItem = require('./cweep_item.jsx').CweepItem;
 
-var Cweeps = React.createClass({
+exports.Cweeps = React.createClass({
   componentWillMount: function () {
     var modelList = this.props.modelList;
 

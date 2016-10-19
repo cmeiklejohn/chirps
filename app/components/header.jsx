@@ -1,6 +1,7 @@
-/** @jsx React.DOM */
+let React = require('react');
+let AddCweep = require('./add_cweep.jsx').AddCweep;
 
-var Header = React.createClass({
+exports.Header = React.createClass({
   componentWillMount: function () {
     this.props.modelList.on('add', function () {
       this.setState({ addCweepShown: false });

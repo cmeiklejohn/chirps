@@ -1,6 +1,9 @@
-/** @jsx React.DOM */
+let React = require('react');
+let CweepList = require("./../models/cweep_list.js").CweepList;
+let Header = require('./header.jsx').Header;
+let Cweeps = require('./cweeps.jsx').Cweeps;
 
-var App = React.createClass({
+exports.app = React.createClass({
   render: function () {
     var cweepList = new CweepList();
 

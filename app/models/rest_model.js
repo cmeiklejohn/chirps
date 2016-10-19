@@ -1,6 +1,9 @@
+let Eventable = require('./eventable.js').Eventable;
+
 class RestModel extends Eventable {
 
   constructor(props = {}) {
+    super();
     this.setProps(props);
   }
 
@@ -53,3 +56,5 @@ class RestModel extends Eventable {
   }
 
 }
+
+exports.RestModel = RestModel;

@@ -1,11 +1,14 @@
-/** @jsx React.DOM */
+let React = require('react');
+let Cweep = require('../models/cweep.js').Cweep;
 
-var avatar = 'https://si0.twimg.com/profile_images/1968705093/avatar.jpg';
+function avatar() {
+  return 'https://robohash.org/' + Math.random();
+}
 
-var AddCweep = React.createClass({
+exports.AddCweep = React.createClass({
   getInitialState: function () {
     return {
-      cweep: new Cweep({ avatar: avatar })
+      cweep: new Cweep({ avatar: avatar() })
     };
   },
   onInputChange: function (ev) {

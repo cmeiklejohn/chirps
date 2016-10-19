@@ -1,6 +1,10 @@
-class RestModelList extends Eventable {
+let Eventable = require('./eventable.js').Eventable;
+let RestModel = require('./rest_model.js').RestModel;
+
+exports.RestModelList = class RestModelList extends Eventable {
 
   constructor() {
+    super();
     this.model = RestModel;
     this.items = [];
   }
