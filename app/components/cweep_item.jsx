@@ -5,7 +5,7 @@ exports.CweepItem = React.createClass({
     var cweep = this.props.cweep,
         style = {
           background: 'url(' + cweep.avatar + ')',
-          backgroundSize: '40px 40px'
+          backgroundSize: '52px 52px'
         };
 
     return (

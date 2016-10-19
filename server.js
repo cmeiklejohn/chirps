@@ -29,16 +29,30 @@ server.get('/', function (req, res, next) {
 
 server.get('/cweeps', function (req, res) {
   cweepSet.read().then(cweeps => {
+    cweeps.sort((x,y) => x.time - y.time);
     res.send(cweeps);
   })
 });
 
 server.post('/cweeps', function (req, res) {
   var cweep = req.body;
+  cweep.time = Date.now();
   return antidote.update(
     cweepSet.add(cweep)
   ).then(() => {
     res.status(200).send(cweep);
+  });
+});
+
+// function to delete everything (for demos and debugging)
+// e.g.: curl -d "" http://localhost:1337/clearCweeps
+server.post('/clearCweeps', function (req, res) {
+  return cweepSet.read().then(cweeps => {
+      return antidote.update(
+        cweepSet.removeAll(cweeps)
+      );
+  }).then(() => {
+    res.status(200).send("cweeps cleared\n");
   });
 });
 

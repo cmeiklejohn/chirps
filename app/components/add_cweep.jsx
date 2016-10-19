@@ -2,7 +2,7 @@ let React = require('react');
 let Cweep = require('../models/cweep.js').Cweep;
 
 function avatar() {
-  return 'https://robohash.org/' + Math.random();
+  return 'https://robohash.org/' + Math.random() + '?size=52x52';
 }
 
 exports.AddCweep = React.createClass({
