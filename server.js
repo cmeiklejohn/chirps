@@ -1,6 +1,7 @@
 var express = require('express'),
     http    = require('http'),
     path    = require('path'),
+    antidoteClient = require('antidote_ts_client')
     server  = express();
 
 server.configure(function () {
@@ -17,30 +18,28 @@ server.configure('development', function () {
   server.use(express.errorHandler());
 });
 
+// Antidote connection setup
+let antidote = antidoteClient.connect(process.env.ANTIDOTE_PORT || 8087, process.env.ANTIDOTE_HOST || "localhost");
+let cweepSet = antidote.set("cweepSet");
+
 // ----- APP ----- //
 server.get('/', function (req, res, next) { 
   res.sendfile('public/index.html');
 });
 
-var FAKE_DATA_STORE = [
-  { avatar: 'https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg', message: 'I love ActionScript' },
-  { avatar: 'https://si0.twimg.com/profile_images/2201732897/notch_weird.png', message: 'Endermen used to be people' },
-  { avatar: 'https://si0.twimg.com/profile_images/1968705093/avatar.jpg', message: 'dat cweep' },
-  { avatar: 'https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg', message: "We don't go to Ravenholm" }
-]
-
 server.get('/cweeps', function (req, res) {
-  // fake response
-  res.send(FAKE_DATA_STORE);
+  cweepSet.read().then(cweeps => {
+    res.send(cweeps);
+  })
 });
 
 server.post('/cweeps', function (req, res) {
   var cweep = req.body;
-
-  // mock saving it to some data store
-  FAKE_DATA_STORE.push(cweep);
-
-  res.status(200).send(cweep);
+  return antidote.update(
+    cweepSet.add(cweep)
+  ).then(() => {
+    res.status(200).send(cweep);
+  });
 });
 
 // ----- start server -----

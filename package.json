@@ -7,7 +7,8 @@
     "start": "node server"
   },
   "dependencies": {
-    "express": "3.0.0"
+    "express": "3.0.0",
+    "antidote_ts_client": "0.0.1"
   },
    "devDependencies": {
     "grunt": "~0.4.1",
