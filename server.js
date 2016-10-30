@@ -62,8 +62,12 @@ server.post('/api/cweeps', function (req, res) {
   return userSet.read().then(users => {
     // add new cweep to the timeline of all users
     let ops = users.map(u => timeline(u).add(cweep))
-    return antidote.update(ops);
-  }).then(() => {
+    if (ops.length > 0) {
+      return antidote.update(ops);
+    } else {
+      console.log("Warning: No users found to see the new cweep.")
+    }
+  }).then(_ => {
     res.status(200).send(cweep);
   });
 });
