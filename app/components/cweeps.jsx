@@ -18,8 +18,8 @@ exports.Cweeps = React.createClass({
     return { cweeps: [] };
   },
   render: function () {
-    var cweeps = this.state.cweeps.map(function (cwp) {
-      return <CweepItem cweep={cwp}/>
+    var cweeps = this.state.cweeps.map(function (cwp, i) {
+      return <CweepItem key={i} cweep={cwp}/>
     });
     return (
       <ul className='cweep-list' >{cweeps}</ul>
