@@ -5,8 +5,8 @@ exports.Cweeps = React.createClass({
   componentWillMount: function () {
     var modelList = this.props.modelList;
 
-    modelList.on('load',  this.setModelListState.bind(this));
-    modelList.on('add',   this.setModelListState.bind(this));
+    modelList.on('load', this.setModelListState);
+    modelList.on('add', this.setModelListState);
   },
   componentDidMount: function () {
     this.props.modelList.load();

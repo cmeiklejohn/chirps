@@ -31,7 +31,7 @@ exports.RestModelList = class RestModelList extends Eventable {
   }
 
   add(item) {
-    this.items.push(item);
+    this.items.unshift(item);
     this.fire('add');
   }
 

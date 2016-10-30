@@ -5,7 +5,7 @@ exports.Cweep = class Cweep extends rm.RestModel {
   constructor(props) {
     super(props);
 
-    this.root = '/cweeps';
+    this.root = '/api/cweeps';
   }
 
   serialize() {

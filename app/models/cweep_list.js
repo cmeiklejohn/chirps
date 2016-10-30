@@ -3,11 +3,14 @@ let Cweep = require('./cweep.js').Cweep;
 
 exports.CweepList = class CweepList extends RestModelList {
 
-  constructor() {
+  constructor(user) {
     super();
 
     this.model = Cweep;
-    this.root = '/cweeps';
+    this.root = '/api/timeline/';
+    if (user) {
+      this.root += user;
+    }
   }
 
 }
