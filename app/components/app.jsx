@@ -1,7 +1,7 @@
-let React = require('react');
-let CweepList = require("./../models/cweep_list.js").CweepList;
-let Header = require('./header.jsx').Header;
-let Cweeps = require('./cweeps.jsx').Cweeps;
+import React from 'react';
+import { CweepList as CweepList } from "./../models/cweep_list.js";;
+import { Header as Header } from './header.jsx';;
+import { Cweeps as Cweeps } from './cweeps.jsx';;
 import { Home } from './home.jsx'
 import { UserTimeline } from './userTimeline.jsx'
 import { Router, Route, Link, browserHistory } from 'react-router'

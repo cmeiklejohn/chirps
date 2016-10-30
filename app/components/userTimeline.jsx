@@ -1,7 +1,7 @@
-let React = require('react');
-let CweepList = require("./../models/cweep_list.js").CweepList;
-let Header = require('./header.jsx').Header;
-let Cweeps = require('./cweeps.jsx').Cweeps;
+import React from 'react';
+import { CweepList as CweepList } from "./../models/cweep_list.js";;
+import { Header as Header } from './header.jsx';;
+import { Cweeps as Cweeps } from './cweeps.jsx';;
 
 exports.UserTimeline = React.createClass({
   render: function () {

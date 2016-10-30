@@ -1,5 +1,5 @@
-let React = require('react');
-let CweepItem = require('./cweep_item.jsx').CweepItem;
+import React from 'react';
+import { CweepItem as CweepItem } from './cweep_item.jsx';;
 
 exports.Cweeps = React.createClass({
   componentWillMount: function () {

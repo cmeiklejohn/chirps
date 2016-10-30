@@ -1,5 +1,5 @@
-let Eventable = require('./eventable.js').Eventable;
-let RestModel = require('./rest_model.js').RestModel;
+import { Eventable as Eventable } from './eventable.js';;
+import { RestModel as RestModel } from './rest_model.js';;
 
 exports.RestModelList = class RestModelList extends Eventable {
 

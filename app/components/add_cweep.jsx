@@ -1,5 +1,5 @@
-let React = require('react');
-let Cweep = require('../models/cweep.js').Cweep;
+import React from 'react';
+import { Cweep as Cweep } from '../models/cweep.js';;
 
 function avatar() {
   // Get some random avatar 

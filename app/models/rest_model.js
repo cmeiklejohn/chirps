@@ -1,4 +1,4 @@
-let Eventable = require('./eventable.js').Eventable;
+import { Eventable as Eventable } from './eventable.js';;
 
 class RestModel extends Eventable {
 

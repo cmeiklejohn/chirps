@@ -1,4 +1,4 @@
-let React = require('react');
+import React from 'react';
 
 exports.CweepItem = React.createClass({
   render: function () {

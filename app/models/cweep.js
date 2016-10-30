@@ -1,4 +1,4 @@
-let rm = require("./rest_model.js")
+import rm from "./rest_model.js"
 
 exports.Cweep = class Cweep extends rm.RestModel {
 

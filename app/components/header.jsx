@@ -1,5 +1,5 @@
-let React = require('react');
-let AddCweep = require('./add_cweep.jsx').AddCweep;
+import React from 'react';
+import { AddCweep as AddCweep } from './add_cweep.jsx';;
 
 exports.Header = React.createClass({
   componentWillMount: function () {

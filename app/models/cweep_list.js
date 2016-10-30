@@ -1,5 +1,5 @@
-let RestModelList = require("./rest_model_list.js").RestModelList;
-let Cweep = require('./cweep.js').Cweep;
+import { RestModelList as RestModelList } from "./rest_model_list.js";;
+import { Cweep as Cweep } from './cweep.js';;
 
 exports.CweepList = class CweepList extends RestModelList {
 
