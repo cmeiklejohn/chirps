@@ -26,6 +26,9 @@ antidote.defaultBucket = "cweepy";
 let userSet = antidote.set("users")
 let timeline = (user) => antidote.set(`timeline_${user}`);
 
+// insert dummy user
+antidote.update(userSet.add('Donald'))
+
 function currentUser(request) {
   // return fake user
   return 'Donald';
@@ -46,13 +49,13 @@ server.get(/^\/(timeline)\/.*/, function (req, res, next) {
 
 // API
 
-server.get('/api/users', function (req, res) {
+server.get('/api/users', function (req, res, next) {
   userSet.read().then(users => {
     res.send(users);
-  })
+  }).catch(next);
 });
 
-server.post('/api/cweeps', function (req, res) {
+server.post('/api/cweeps', function (req, res, next) {
   var cweep = req.body;
   // add a timestamp for sorting
   cweep.time = Date.now();
@@ -69,30 +72,30 @@ server.post('/api/cweeps', function (req, res) {
     }
   }).then(_ => {
     res.status(200).send(cweep);
-  });
+  }).catch(next);
 });
 
-function getTimeline(user, res) {
+function getTimeline(user, res, next) {
   timeline(user).read().then(cweeps => {
     cweeps.sort((x, y) => y.time - x.time);
     res.send(cweeps);
-  })
+  }).catch(next);
 }
 
-server.get('/api/timeline', function (req, res) {
-  getTimeline(currentUser(req), res)
+server.get('/api/timeline', function (req, res, next) {
+  getTimeline(currentUser(req), res, next)
 });
 
-server.get('/api/timeline/:user', function (req, res) {
+server.get('/api/timeline/:user', function (req, res, next) {
   let user = req.params.user;
-  getTimeline(user, res)
+  getTimeline(user, res, next)
 });
 
 // function to delete everything (for demos and debugging)
 // e.g.: curl -d "" http://localhost:1337/api/clearCweeps
-server.post('/api/clearCweeps', function (req, res) {
+server.post('/api/clearCweeps', function (req, res, next) {
   function clearUser(u) {
-    timeline(u).read().then(cweeps => {
+    return timeline(u).read().then(cweeps => {
       return antidote.update([
         userSet.remove(u),
         timeline(u).removeAll(cweeps)
@@ -102,8 +105,12 @@ server.post('/api/clearCweeps', function (req, res) {
 
 
   return userSet.read().then(users => {
-    return Promise.all(users.map(u => clearUser(u)))
+    console.log(`Clearing users ${users}`);
+    if (users.length > 0) {
+      return Promise.all(users.map(u => clearUser(u)))
+    }
   }).then(_ => {
+    console.log(`Adding new users`);
     // add some users:
     return antidote.update(
       userSet.addAll([
@@ -115,7 +122,7 @@ server.post('/api/clearCweeps', function (req, res) {
     );
   }).then(() => {
     res.status(200).send("database cleared\n");
-  });
+  }).catch(next);
 });
 
 // ----- start server -----
