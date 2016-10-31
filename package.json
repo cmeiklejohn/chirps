@@ -10,7 +10,7 @@
     "develop": "concurrently --kill-others \"npm run watch\" \"nodemon server.js\""
   },
   "dependencies": {
-    "antidote_ts_client": "0.0.2",
+    "antidote_ts_client":  "0.0.4",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "babel-runtime": "^6.18.0",
