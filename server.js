@@ -28,6 +28,8 @@ let timeline = (user) => antidote.set(`timeline_${user}`);
 
 // insert dummy user
 antidote.update(userSet.add('Donald'))
+  .then(_ => console.log(`Inserted dummy user`))
+  .catch(err => console.log(`Could not insert dummy user `, err));
 
 function currentUser(request) {
   // return fake user
