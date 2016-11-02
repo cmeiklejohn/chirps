@@ -7,5 +7,5 @@ compile:
 install:
 	npm install
 
-dev:
+dev: install compile
 	npm run develop
