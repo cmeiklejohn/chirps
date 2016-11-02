@@ -52,36 +52,18 @@ server.get(/^\/(timeline)\/.*/, function (req, res, next) {
 // API
 
 server.get('/api/users', function (req, res, next) {
-  userSet.read().then(users => {
-    res.send(users);
-  }).catch(next);
+  // TODO: return the set of users
 });
 
 server.post('/api/chirps', function (req, res, next) {
-  var chirp = req.body;
-  // add a timestamp for sorting
-  chirp.time = Date.now();
-  // store current user
-  chirp.user = currentUser(req);
-
-  return userSet.read().then(users => {
-    // add new chirp to the timeline of all users
-    let ops = users.map(u => timeline(u).add(chirp))
-    if (ops.length > 0) {
-      return antidote.update(ops);
-    } else {
-      console.log("Warning: No users found to see the new chirp.")
-    }
-  }).then(_ => {
-    res.status(200).send(chirp);
-  }).catch(next);
+  // TODO: use the userSet and timeline to insert the new tweet in
+  // everyone's timelines.
 });
 
 function getTimeline(user, res, next) {
-  timeline(user).read().then(chirps => {
-    chirps.sort((x, y) => y.time - x.time);
-    res.send(chirps);
-  }).catch(next);
+  // TODO: return the particular users timeline using the currentUser
+  // function: since the tweets are a set, you'll need to sort the
+  // response.
 }
 
 server.get('/api/timeline', function (req, res, next) {
