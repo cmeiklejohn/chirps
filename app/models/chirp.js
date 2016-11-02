@@ -1,11 +1,11 @@
 import rm from "./rest_model.js"
 
-exports.Cweep = class Cweep extends rm.RestModel {
+exports.Chirp = class Chirp extends rm.RestModel {
 
   constructor(props) {
     super(props);
 
-    this.root = '/api/cweeps';
+    this.root = '/api/chirps';
   }
 
   serialize() {

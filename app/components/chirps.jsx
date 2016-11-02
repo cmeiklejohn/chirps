@@ -1,7 +1,7 @@
 import React from 'react';
-import { CweepItem as CweepItem } from './cweep_item.jsx';;
+import { ChirpItem as ChirpItem } from './chirp_item.jsx';;
 
-exports.Cweeps = React.createClass({
+exports.Chirps = React.createClass({
   componentWillMount: function () {
     var modelList = this.props.modelList;
 
@@ -12,17 +12,17 @@ exports.Cweeps = React.createClass({
     this.props.modelList.load();
   },
   setModelListState: function () {
-    this.setState({ cweeps: this.props.modelList.toArray() });
+    this.setState({ chirps: this.props.modelList.toArray() });
   },
   getInitialState: function () {
-    return { cweeps: [] };
+    return { chirps: [] };
   },
   render: function () {
-    var cweeps = this.state.cweeps.map(function (cwp, i) {
-      return <CweepItem key={i} cweep={cwp}/>
+    var chirps = this.state.chirps.map(function (cwp, i) {
+      return <ChirpItem key={i} chirp={cwp}/>
     });
     return (
-      <ul className='cweep-list' >{cweeps}</ul>
+      <ul className='chirp-list' >{chirps}</ul>
     );
   }
 });

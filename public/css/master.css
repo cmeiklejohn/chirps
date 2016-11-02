@@ -41,7 +41,7 @@ body {
   margin: 0;
 }
 
-.header .add-cweep {
+.header .add-chirp {
   cursor: pointer;
   font-size: 28px;
   line-height: 28px;
@@ -60,12 +60,12 @@ body {
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
 }
 
-.header .add-cweep:hover {
+.header .add-chirp:hover {
   color: rgba(0, 0, 0, 0.75);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
-.header .add-cweep:active {
+.header .add-chirp:active {
   box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
   background: rgb(220,121,0);
   background: -moz-linear-gradient(top,  rgba(220,121,0,1) 0%, rgba(255,149,19,1) 100%);
@@ -77,7 +77,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc7900', endColorstr='#ff9513',GradientType=0 );
 }
 
-.add-cweep-form {
+.add-chirp-form {
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-top: 0;
@@ -87,7 +87,7 @@ body {
   background: #888 url(/img/noise.png);
 }
 
-.add-cweep-form .message {
+.add-chirp-form .message {
   font-size: 22px;
   padding: 6px 10px;
   width: 336px;
@@ -95,7 +95,7 @@ body {
   border: 1px solid #444;
   display: block;
 }
-.add-cweep-form .button {
+.add-chirp-form .button {
   display: block;
   float: right;
   color: #fff;
@@ -116,7 +116,7 @@ body {
   background: linear-gradient(to bottom,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
 }
 
-.add-cweep-form .button:hover {
+.add-chirp-form .button:hover {
   background: rgb(255,175,75);
   background: -moz-linear-gradient(top,  rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,175,75,1)), color-stop(100%,rgba(255,146,10,1)));
@@ -130,7 +130,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
-.add-cweep-form .button:active {
+.add-chirp-form .button:active {
   background: rgb(255,146,10);
   background: -moz-linear-gradient(top,  rgba(255,146,10,1) 0%, rgba(255,175,75,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,146,10,1)), color-stop(100%,rgba(255,175,75,1)));
@@ -142,7 +142,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
-.cweep-list {
+.chirp-list {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -151,19 +151,19 @@ body {
   border-radius: 0 0 6px 6px;
 }
 
-.cweep-list li {
+.chirp-list li {
   padding: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
-.cweep-list li:first-child {
+.chirp-list li:first-child {
   border-top: 0;
 }
-.cweep-list li:last-child {
+.chirp-list li:last-child {
   border-radius: 0 0 6px 6px;
 }
 
-.cweep-list li .avatar {
+.chirp-list li .avatar {
   float: left;
   width: 50px;
   height: 50px;
@@ -174,7 +174,7 @@ body {
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
 }
 
-.cweep-list li .message {
+.chirp-list li .message {
   float: left;
   margin-left: 20px;
   font-size: 18px;

@@ -1,34 +1,34 @@
 import React from 'react';
-import { AddCweep as AddCweep } from './add_cweep.jsx';;
+import { AddChirp as AddChirp } from './add_chirp.jsx';;
 
 exports.Header = React.createClass({
   componentWillMount: function () {
     this.props.modelList.on('add', function () {
-      this.setState({ addCweepShown: false });
+      this.setState({ addChirpShown: false });
     }.bind(this));
   },
   getInitialState: function () {
     return {
-      addCweepShown: false
+      addChirpShown: false
     };
   },
-  showAddCweep: function () {
-    this.setState({ addCweepShown: true });
+  showAddChirp: function () {
+    this.setState({ addChirpShown: true });
   },
   render: function () {
-    var addCweep;
+    var addChirp;
 
-    if (this.state.addCweepShown) {
-      addCweep = <AddCweep modelList={this.props.modelList}/>;
+    if (this.state.addChirpShown) {
+      addChirp = <AddChirp modelList={this.props.modelList}/>;
     }
 
     return (
       <header>
         <div className='header'>
-          <h1>Cweepy</h1>
-          <div className='add-cweep' onClick={this.showAddCweep}>+</div>
+          <h1>Chirps</h1>
+          <div className='add-chirp' onClick={this.showAddChirp}>+</div>
         </div>
-        {addCweep}
+        {addChirp}
       </header>
     );
   }

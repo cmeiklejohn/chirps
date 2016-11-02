@@ -20,7 +20,7 @@ server.configure('development', function () {
 
 // Antidote connection setup
 let antidote = antidoteClient.connect(process.env.ANTIDOTE_PORT || 8087, process.env.ANTIDOTE_HOST || "localhost");
-antidote.defaultBucket = "cweepy";
+antidote.defaultBucket = "chirps";
 
 // used keys
 let userSet = antidote.set("users")
@@ -57,30 +57,30 @@ server.get('/api/users', function (req, res, next) {
   }).catch(next);
 });
 
-server.post('/api/cweeps', function (req, res, next) {
-  var cweep = req.body;
+server.post('/api/chirps', function (req, res, next) {
+  var chirp = req.body;
   // add a timestamp for sorting
-  cweep.time = Date.now();
+  chirp.time = Date.now();
   // store current user
-  cweep.user = currentUser(req);
+  chirp.user = currentUser(req);
 
   return userSet.read().then(users => {
-    // add new cweep to the timeline of all users
-    let ops = users.map(u => timeline(u).add(cweep))
+    // add new chirp to the timeline of all users
+    let ops = users.map(u => timeline(u).add(chirp))
     if (ops.length > 0) {
       return antidote.update(ops);
     } else {
-      console.log("Warning: No users found to see the new cweep.")
+      console.log("Warning: No users found to see the new chirp.")
     }
   }).then(_ => {
-    res.status(200).send(cweep);
+    res.status(200).send(chirp);
   }).catch(next);
 });
 
 function getTimeline(user, res, next) {
-  timeline(user).read().then(cweeps => {
-    cweeps.sort((x, y) => y.time - x.time);
-    res.send(cweeps);
+  timeline(user).read().then(chirps => {
+    chirps.sort((x, y) => y.time - x.time);
+    res.send(chirps);
   }).catch(next);
 }
 
@@ -94,13 +94,13 @@ server.get('/api/timeline/:user', function (req, res, next) {
 });
 
 // function to delete everything (for demos and debugging)
-// e.g.: curl -d "" http://localhost:1337/api/clearCweeps
-server.post('/api/clearCweeps', function (req, res, next) {
+// e.g.: curl -d "" http://localhost:1337/api/clearChirps
+server.post('/api/clearChirps', function (req, res, next) {
   function clearUser(u) {
-    return timeline(u).read().then(cweeps => {
+    return timeline(u).read().then(chirps => {
       return antidote.update([
         userSet.remove(u),
-        timeline(u).removeAll(cweeps)
+        timeline(u).removeAll(chirps)
       ]);
     })
   }

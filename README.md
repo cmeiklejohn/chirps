@@ -1,8 +1,5 @@
-cweepy-es6-react
+Chirps
 ================
-
-Rebuild Cweepy with ES6 and React
-
 
 Compile and execute:
 
@@ -35,4 +32,4 @@ Compile and execute:
 
 The database state can be reset and initialized using a simple API call:
 
-    curl -d "" http://localhost:1337/api/clearCweeps
+    curl -d "" http://localhost:1337/api/clearChirps

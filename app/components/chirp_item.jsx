@@ -1,17 +1,17 @@
 import React from 'react';
 
-exports.CweepItem = React.createClass({
+exports.ChirpItem = React.createClass({
   render: function () {
-    var cweep = this.props.cweep,
+    var chirp = this.props.chirp,
         style = {
-          background: 'url(' + cweep.avatar + ')',
+          background: 'url(' + chirp.avatar + ')',
           backgroundSize: '52px 52px'
         };
 
     return (
       <li>
         <div className='avatar' style={style}></div>
-        <div className='message'>{cweep.message}</div>
+        <div className='message'>{chirp.message}</div>
       </li>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cweep as Cweep } from '../models/cweep.js';;
+import { Chirp as Chirp } from '../models/chirp.js';;
 
 function avatar() {
   // Get some random avatar 
@@ -8,24 +8,24 @@ function avatar() {
   return `https://api.adorable.io/avatars/52/${Math.random()}.png`;
 }
 
-exports.AddCweep = React.createClass({
+exports.AddChirp = React.createClass({
   getInitialState: function () {
     return {
-      cweep: new Cweep({ avatar: avatar() })
+      chirp: new Chirp({ avatar: avatar() })
     };
   },
   onInputChange: function (ev) {
-    this.state.cweep.message = ev.target.value;
+    this.state.chirp.message = ev.target.value;
   },
   save: function () {
-    var cweep = this.state.cweep;
+    var chirp = this.state.chirp;
 
-    this.props.modelList.add(cweep);
-    cweep.save();
+    this.props.modelList.add(chirp);
+    chirp.save();
   },
   render: function () {
     return (
-      <div className='add-cweep-form'>
+      <div className='add-chirp-form'>
         <input type='text' className='message' onChange={this.onInputChange} />
         <a className='button post' onClick={this.save}>POST!</a>
       </div>

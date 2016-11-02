@@ -1,15 +1,15 @@
 import React from 'react';
-import { CweepList as CweepList } from "./../models/cweep_list.js";;
+import { ChirpList as ChirpList } from "./../models/chirp_list.js";;
 import { Header as Header } from './header.jsx';;
-import { Cweeps as Cweeps } from './cweeps.jsx';;
+import { Chirps as Chirps } from './chirps.jsx';;
 
 exports.Home = React.createClass({
   render: function () {
-    var cweepList = new CweepList();
+    var chirpList = new ChirpList();
     return (
         <div className='app'>
-          <Header modelList={cweepList} />
-          <Cweeps modelList={cweepList} />
+          <Header modelList={chirpList} />
+          <Chirps modelList={chirpList} />
         </div>
     );
   }

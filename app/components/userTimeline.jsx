@@ -1,17 +1,17 @@
 import React from 'react';
-import { CweepList as CweepList } from "./../models/cweep_list.js";;
+import { ChirpList as ChirpList } from "./../models/chirp_list.js";;
 import { Header as Header } from './header.jsx';;
-import { Cweeps as Cweeps } from './cweeps.jsx';;
+import { Chirps as Chirps } from './chirps.jsx';;
 
 exports.UserTimeline = React.createClass({
   render: function () {
     let user = this.props.params.userId
-    var cweepList = new CweepList(user);
+    var chirpList = new ChirpList(user);
 
     return (
         <div className='app'>
-          <Header modelList={cweepList} />
-          <Cweeps modelList={cweepList} />
+          <Header modelList={chirpList} />
+          <Chirps modelList={chirpList} />
         </div>
     );
   }
