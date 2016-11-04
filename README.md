@@ -28,6 +28,11 @@ Compile and execute:
     * `main.jsx` is the entry point.
     * `components/app.jsx` is where the client-side routes are defined.
 
+## Tutorial
+
+There's an incomplete application in the `tutorial` branch, that you can
+complete by adding the backend pieces to talk to Antidote.
+
 ## Other
 
 The database state can be reset and initialized using a simple API call:
