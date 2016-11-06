@@ -24,7 +24,7 @@
     "@types/react-dom": "^0.14.18",
     "@types/react-router": "^2.0.38",
     "@types/request": "0.0.32",
-    "antidote_ts_client": "0.0.5",
+    "antidote_ts_client": "0.0.6",
     "axios": "^0.15.2",
     "body-parser": "^1.15.2",
     "errorhandler": "^1.4.3",

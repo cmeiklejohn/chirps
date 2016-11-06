@@ -71,10 +71,25 @@ function handle(handler: (req: express.Request)=>Promise<any>): express.RequestH
   };
 }
 
+/**
+ * Gives a list of all user-names in the system
+ */
 server.get('/api/users', handle(async req => {
   return await userSet.read();
 }));
 
+/**
+ * Adds a new Chirp for the current user (see currentUser function).
+ * 
+ * Expects a Chirp in the following format:
+ * {
+ *   message: string;
+ *   avatar: string;
+ * }
+ * 
+ * The new Chirp will be saved to the timeline of every user in the system
+ * 
+ */
 server.post('/api/chirps', handle(async req => {
   var chirp: Chirp = req.body;
   // add a timestamp for sorting
@@ -95,16 +110,25 @@ server.post('/api/chirps', handle(async req => {
   return chirp;
 }));
 
+/**
+ * Fetches the timeline for a given user
+ */
 async function getTimeline(user: UserId): Promise<Chirp[]> {
   let chirps = await timeline(user).read();
   chirps.sort((x, y) => y.time - x.time);
   return chirps;
 }
 
+/**
+ * Gives the timeline for the current user
+ */
 server.get('/api/timeline', handle(async req => {
   return getTimeline(currentUser(req))
 }));
 
+/**
+ * Gives the timeline for a specific user
+ */
 server.get('/api/timeline/:user', handle(async req => {
   let user: UserId = req.params.user;
   return getTimeline(user)
