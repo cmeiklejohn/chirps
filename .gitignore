@@ -3,3 +3,5 @@ public/js/app/*.js
 public/js/app/**/*.js
 public/js/bundle.js
 jsconfig.json
+dist/
+public/js/bundle*
