@@ -19,12 +19,14 @@ Compile and execute:
 
 ## Structure:
 
-* `server.js` contains the implementation of the server
+The source code is located in `src` and split into client-code, server-code and shared code.
+
+* `server/server.js` contains the implementation of the server
     * Json API is available via `/api/...` routes.
     * Routes for the web application:
         * `/` is the home page.
         * `/timeline/:userName` shows the timeline of the given user.
-* The `app` folder contains the javascript app.
+* The `client/` folder contains the client-side javascript app.
     * `main.jsx` is the entry point.
     * `components/app.jsx` is where the client-side routes are defined.
 
