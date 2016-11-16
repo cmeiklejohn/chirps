@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { ChirpItem as ChirpItem } from './chirp_item';
-import { Chirp } from '../../shared/chirp';
 
-export interface Props {
-  chirps: Chirp[] | 'loading';
-}
-
-export function Chirps(props: Props) {
+export function Chirps(props) {
   if (props.chirps === 'loading') {
     return <div>Loading...</div>;
   } else {

@@ -1,17 +1,8 @@
 import * as React from 'react';
 import { AddChirp } from './add_chirp';
-import { Chirp } from '../../shared/chirp';
 
 
-export interface Props {
-  onChirpAdded(chirp: Chirp): Promise<Chirp>;
-}
-
-export interface State {
-  addChirpShown: boolean;
-}
-
-export class Header extends React.Component<Props, State> {
+export class Header extends React.Component {
 
   constructor() {
     super();
@@ -24,13 +15,13 @@ export class Header extends React.Component<Props, State> {
     this.setState({ addChirpShown: true });
   }
 
-  async onChirpAdded(chirp: Chirp) {
+  async onChirpAdded(chirp) {
     await this.props.onChirpAdded(chirp);
     this.setState({ addChirpShown: false });
   }
 
   render() {
-    let addChirp: JSX.Element | undefined;
+    let addChirp = undefined;
 
     if (this.state.addChirpShown) {
       addChirp = <AddChirp onChirpAdded={this.onChirpAdded.bind(this)} />;

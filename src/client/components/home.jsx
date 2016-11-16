@@ -1,21 +1,10 @@
 import * as React from 'react';
 import { Header } from './header';
 import { Chirps } from './chirps';
-import { Chirp } from '../../shared/chirp';
 import * as api from '../models/chirps'
 
-export interface Props {
 
-}
-
-export interface State {
-  status: 'loading' | 'ready' | 'failed';
-  chirps: Chirp[];
-  // chirps added in current session
-  newChirps: Chirp[];
-}
-
-export class Home extends React.Component<Props, State> {
+export class Home extends React.Component {
 
   constructor() {
     super();
@@ -33,24 +22,24 @@ export class Home extends React.Component<Props, State> {
       this.setState({
         status: 'ready',
         chirps: chirps
-      } as State)
+      })
     } catch (e) {
       this.setState({
         status: 'failed'
-      } as State)
+      })
     }
   }
 
-  async addChirp(chirp: Chirp) {
+  async addChirp(chirp) {
     await api.saveChirp(chirp);
     // add chirp to current list of chirps
     this.setState({
       newChirps: [chirp].concat(this.state.newChirps)
-    } as State)
+    })
   }
 
   render() {
-    let body: JSX.Element;
+    let body;
     if (this.state.status == 'ready') {
       let chirps = this.state.newChirps.concat(this.state.chirps);
       body = <Chirps chirps={chirps} />

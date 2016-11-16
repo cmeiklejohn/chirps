@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Chirp } from '../../shared/chirp'
 
 
 function avatar() {
@@ -9,17 +8,7 @@ function avatar() {
   return `https://api.adorable.io/avatars/52/${Math.random()}.png`;
 }
 
-export interface State {
-  chirp: Chirp;
-  error?: string; 
-  saving: boolean;
-}
-
-export interface Props {
-  onChirpAdded(chirp: Chirp): Promise<void>;
-}
-
-export class AddChirp extends React.Component<Props, State>{
+export class AddChirp extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -30,22 +19,22 @@ export class AddChirp extends React.Component<Props, State>{
       saving: false
     };
   }
-  onInputChange(ev: any) {
-    let message: string = ev.target.value;
+  onInputChange(ev) {
+    let message = ev.target.value;
     this.state.chirp.message = message;
   }
   async save() {
     try {
-      this.setState({saving: true, error: undefined} as any)
+      this.setState({saving: true, error: undefined})
       var chirp = this.state.chirp;
       await this.props.onChirpAdded(chirp);
-      this.setState({saving: false} as any)
+      this.setState({saving: false})
     } catch (e) {
       console.log("add_chirps error", e)
       this.setState({
         saving: false,
         error: "Could not store Chirp!"
-      } as any)
+      })
     }
   }
   render() {

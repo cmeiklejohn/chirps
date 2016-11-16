@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {Chirp} from '../../shared/chirp'
 
-export interface Props {
-  chirp: Chirp
-}
-
-export function ChirpItem(props: Props) {
+export function ChirpItem(props) {
   let chirp = props.chirp;
   let style = {
     background: 'url(' + chirp.avatar + ')',

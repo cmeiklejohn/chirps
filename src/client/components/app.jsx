@@ -5,15 +5,7 @@ import { Home } from './home'
 import { UserTimeline } from './userTimeline'
 import { Router, Route, Link, browserHistory } from 'react-router'
 
-export interface Props {
-
-}
-
-export interface State {
-  page: 'home';
-}
-
-export class App extends React.Component<Props, State>{
+export class App extends React.Component {
   constructor() {
     super();
     this.state = {

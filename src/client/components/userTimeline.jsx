@@ -1,18 +1,9 @@
 import * as React from 'react';
 import { Header } from './header';
 import { Chirps } from './chirps';
-import { Chirp, UserId } from '../../shared/chirp';
 import * as api from '../models/chirps'
 
-export interface Props {
-  userId: UserId
-}
-
-export interface State {
-  chirps: Chirp[] | 'loading';
-}
-
-export class UserTimeline extends React.Component<Props, State> {
+export class UserTimeline extends React.Component {
 
   constructor() {
     super();
@@ -29,7 +20,7 @@ export class UserTimeline extends React.Component<Props, State> {
     })
   }
 
-  async addChirp(chirp: Chirp) {
+  async addChirp(chirp) {
     // TODO
   }
 

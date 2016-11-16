@@ -4,28 +4,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node dist/server/server",
-    "start:watch": "nodemon dist/server/server",
-    "compile:server": "tsc",
+    "start": "node dist/server/server.js",
+    "start:watch": "nodemon dist/server/server.js",
+    "compile:server": "babel src --out-dir dist --source-maps",
     "compile:client": "webpack",
     "compile": "npm run compile:server && npm run compile:client",
-    "compile:server:watch": "tsc --watch",
+    "compile:server:watch": "babel src --out-dir dist --source-maps --watch",
     "compile:client:watch": "webpack --watch",
     "develop": "concurrently --kill-others \"npm run compile:server:watch\" \"npm run compile:client:watch\" \"npm run start:watch\""
   },
   "dependencies": {
-    "@types/axios": "^0.9.33",
-    "@types/body-parser": "0.0.33",
-    "@types/errorhandler": "0.0.30",
-    "@types/express": "^4.0.33",
-    "@types/history": "^2.0.39",
-    "@types/morgan": "^1.7.32",
-    "@types/react": "^0.14.44",
-    "@types/react-dom": "^0.14.18",
-    "@types/react-router": "^2.0.38",
-    "@types/request": "0.0.32",
     "antidote_ts_client": "0.0.6",
     "axios": "^0.15.2",
+    "babel-polyfill": "^6.16.0",
     "body-parser": "^1.15.2",
     "errorhandler": "^1.4.3",
     "express": "4.14.0",
@@ -36,15 +27,28 @@
     "react-router": "^3.0.0"
   },
   "devDependencies": {
-    "typescript": "^2.0.7",
-    "webpack": "^1.13.3",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
     "concurrently": "^3.1.0",
     "nodemon": "^1.11.0",
     "source-map-loader": "^0.1.5",
-    "ts-loader": "^1.0.0",
     "watchify": "3.7.0"
   },
   "engine": {
     "node": ">=0.8.x"
+  },
+  "babel": {
+    "presets": [
+      "es2017"
+    ],
+    "plugins": [
+      "transform-react-jsx",
+      "transform-es2015-modules-commonjs"
+    ]
   }
 }

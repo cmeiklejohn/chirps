@@ -1,12 +1,12 @@
-import { Request } from 'request';
-import * as express from 'express'
-import * as http from 'http'
-import * as path from 'path'
-import * as antidoteClient  from 'antidote_ts_client'
-import {Chirp, UserId} from '../shared/chirp'
-import * as errorhandler from 'errorhandler'
-import * as morgan from 'morgan'
-import * as bodyParser from 'body-parser'
+"use strict"
+
+let express = require('express');
+let http = require('http');
+let path = require('path');
+let antidoteClient = require( 'antidote_ts_client');
+let errorhandler = require('errorhandler');
+let morgan = require('morgan');
+let bodyParser = require('body-parser');
 
 let server = express();
 
@@ -30,10 +30,10 @@ antidote.defaultBucket = "chirps";
 // Database Schema:
 
 // global set of all user ids
-let userSet = antidote.set<UserId>("users")
+let userSet = antidote.set("users")
 
 // each user has a timeline with the Chirps he can read
-let timeline = (user: UserId) => antidote.set<Chirp>(`timeline_${user}`);
+let timeline = (user) => antidote.set(`timeline_${user}`);
 
 //---
 // Demo setup:
@@ -44,7 +44,7 @@ antidote.update(userSet.add('Donald'))
   .then(_ => console.log(`Inserted dummy user`))
   .catch(err => console.log(`Could not insert dummy user `, err));
 
-function currentUser(request: any) {
+function currentUser(request) {
   // return fake user
   return 'Donald';
 }
@@ -63,7 +63,7 @@ server.get(/^\/(timeline)\/.*/, function (req, res, next) {
 // API
 
 // helper function for async handlers:
-function handle(handler: (req: express.Request)=>Promise<any>): express.RequestHandler {
+function handle(handler) {
   return (req, res, next) => {
     handler(req)
       .then(r => res.send(r))
@@ -91,7 +91,7 @@ server.get('/api/users', handle(async req => {
  * 
  */
 server.post('/api/chirps', handle(async req => {
-  var chirp: Chirp = req.body;
+  var chirp = req.body;
   // add a timestamp for sorting
   chirp.time = Date.now();
   // store current user
@@ -113,7 +113,7 @@ server.post('/api/chirps', handle(async req => {
 /**
  * Fetches the timeline for a given user
  */
-async function getTimeline(user: UserId): Promise<Chirp[]> {
+async function getTimeline(user) {
   let chirps = await timeline(user).read();
   chirps.sort((x, y) => y.time - x.time);
   return chirps;
@@ -130,14 +130,14 @@ server.get('/api/timeline', handle(async req => {
  * Gives the timeline for a specific user
  */
 server.get('/api/timeline/:user', handle(async req => {
-  let user: UserId = req.params.user;
+  let user = req.params.user;
   return getTimeline(user)
 }));
 
 // function to delete everything (for demos and debugging)
 // e.g.: curl -d "" http://localhost:1337/api/clearChirps
 server.post('/api/clearChirps', handle(async req => {
-  async function clearUser(u: UserId) {
+  async function clearUser(u) {
     let chirps = await timeline(u).read();
     return antidote.update([
       userSet.remove(u),
