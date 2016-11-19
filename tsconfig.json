@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "outDir": "dist",
+    "rootDir": "src/",
+    "jsx": "react"
+  }
+}
